@@ -1,13 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-
 import { AppComponent } from './app.component';
 import { AccountComponent } from './account/account.component';
 import { NewAccountComponent } from './new-account/new-account.component';
-import {AccountService} from "./shared/account.service";
-import {LoggingService} from "./shared/loggin.service";
 
 @NgModule({
   declarations: [
@@ -19,7 +15,7 @@ import {LoggingService} from "./shared/loggin.service";
     BrowserModule,
     FormsModule,
   ],
-  providers: [AccountService, LoggingService], // Services declared here are usable application-wide
+  providers: [], // Services declared here are usable application-wide
   bootstrap: [AppComponent]
 })
 export class AppModule { }

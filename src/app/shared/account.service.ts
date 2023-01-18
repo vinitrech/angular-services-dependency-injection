@@ -4,7 +4,7 @@
 import {LoggingService} from "./loggin.service";
 import {EventEmitter, Injectable} from "@angular/core";
 
-@Injectable() // Services need to have some metadata to be injectable, this is what this decorator does
+@Injectable({providedIn: 'root'}) // Services need to have some metadata to be injectable, this is what this decorator does
 export class AccountService {
   accounts = [
     {
