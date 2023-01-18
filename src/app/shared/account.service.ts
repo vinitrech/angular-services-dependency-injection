@@ -2,7 +2,7 @@
 // Services can be global by being declared in AppModule, therefore can be injected into other services, for example
 
 import {LoggingService} from "./loggin.service";
-import {Injectable} from "@angular/core";
+import {EventEmitter, Injectable} from "@angular/core";
 
 @Injectable() // Services need to have some metadata to be injectable, this is what this decorator does
 export class AccountService {
@@ -21,16 +21,18 @@ export class AccountService {
     }
   ];
 
+  onStatusUpdated: EventEmitter<string> = new EventEmitter<string>();
+
   constructor(private loggingService: LoggingService) {
   }
 
-  addAcount(newAccount: { name: string, status: string }) {
+  addAccount(newAccount: { name: string, status: string }) {
     this.accounts.push(newAccount)
     this.loggingService.logStatusChange(newAccount.status);
   }
 
   updateStatus(id: number, status: string) {
-    this.accounts[id].status = status
+    this.accounts[id].status = status;
     this.loggingService.logStatusChange(status);
   }
 }

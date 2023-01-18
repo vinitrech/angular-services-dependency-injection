@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {AccountService} from "../shared/account.service";
 
 @Component({
@@ -17,5 +17,6 @@ export class AccountComponent {
 
   onSetTo(status: string) {
     this.accountService.updateStatus(this.id, status);
+    this.accountService.onStatusUpdated.emit(status);
   }
 }

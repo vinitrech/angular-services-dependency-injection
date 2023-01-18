@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, OnChanges, Output, SimpleChange, SimpleChanges} from '@angular/core';
 import {AccountService} from "../shared/account.service";
 
 @Component({
@@ -10,9 +10,13 @@ import {AccountService} from "../shared/account.service";
 export class NewAccountComponent {
 
   constructor(private accountService: AccountService) {
+    this.accountService.onStatusUpdated.subscribe((status: string) => {
+      alert("Status changed: " + status);
+    });
   }
 
   onCreateAccount(accountName: string, accountStatus: string) {
-    this.accountService.addAcount({name: accountName, status: accountStatus});
+    this.accountService.addAccount({name: accountName, status: accountStatus});
   }
+
 }
